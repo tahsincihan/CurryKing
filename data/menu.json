@@ -1,0 +1,38 @@
+{
+    "Appetizers": [
+        {
+            "name": "Crispy Onion Rings",
+            "price": "$6.00",
+            "imgUrl": "onion-rings.jpg"
+        },
+        {
+            "name": "Thai Spring Rolls",
+            "price": "$7.00",
+            "imgUrl": "spring-rolls.jpg"
+        }
+    ],
+    "Soups": [
+        {
+            "name": "Tomato Basil Soup",
+            "price": "$5.50",
+            "imgUrl": "tomato-basil.jpg"
+        },
+        {
+            "name": "Chicken Noodle Soup",
+            "price": "$6.50",
+            "imgUrl": "chicken-noodle.jpg"
+        }
+    ],
+    "Salads": [
+        {
+            "name": "Caesar Salad",
+            "price": "$8.00",
+            "imgUrl": "caesar-salad.jpg"
+        },
+        {
+            "name": "Greek Salad",
+            "price": "$8.50",
+            "imgUrl": "greek-salad.jpg"
+        }
+    ]
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dine In Order - Curry King Exeter</title>
+    <link rel="stylesheet" href="/CurryKing/Pages/style.css">
+</head>
+<body>
+    
+    <div class="menu-container">
+        <button onclick="goBack()" class="back-button">Back</button>
+        <h1>Dine In Menu - Curry King Exeter</h1>
+        <div class="menu-category" id="starters">
+            <h2>Starters</h2>
+            <div class="menu-items"></div>
+        </div>
+        <div class="menu-category" id="chicken">
+            <h2>Chicken</h2>
+            <div class="menu-items"></div>
+        </div>
+        <!-- Additional categories can be added similarly -->
+    </div>
+
+    <div class="order-summary">
+        <h2>Your Order</h2>
+        <ul id="order-list"></ul>
+        <p id="total">Total: £0.00</p>
+        <button id="previewOrder">Preview Order</button>
+
+    </div>
+    
+    <script src="/CurryKing/JS/dinein.js"></script>
+</body>
+</html>

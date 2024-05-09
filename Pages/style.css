@@ -1,0 +1,269 @@
+body, html {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+     /* Centers the text and buttons in the body */
+}
+
+.main-container {
+    text-align: center;
+    width: 80%;
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.main-button-container button {
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.main-button-container button:hover {
+    background-color: #0056b3;
+}
+
+.menu-container {
+    width: 80%;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.menu-category h2 {
+    cursor: pointer;
+    background-color: #eee;
+    padding: 10px;
+    margin-top: 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.menu-item label {
+    font-weight: bold;
+}
+
+.menu-item:last-child {
+    border-bottom: none;
+}
+
+
+/* General styling for the preview container and list */
+.order-summary {
+    width: 80%;
+    max-width: 600px;
+    margin: 20px auto;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+/* Styling for each order item */
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.order-item:last-child {
+    border-bottom: none;
+}
+
+.order-item label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+/* Quantity selector and subtotal display */
+.quantity-selector, .item-subtotal {
+    display: flex;
+    align-items: center;
+}
+
+.quantity-selector input[type="number"] {
+    width: 50px;
+    margin-left: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.item-subtotal {
+    min-width: 100px;
+    margin-left: 20px;
+    font-size: 1em;
+    text-align: right;
+}
+
+/* Styling for the total display */
+.total {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 15px;
+}
+
+/* Input fields styling */
+input[type="number"], input[type="text"] {
+    padding: 5px;
+    margin: 0 5px;
+    width: 50px;
+}
+
+/* Button styles */
+button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+
+.rice-options {
+    margin-right: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.dish-note {
+    width: 60px;
+    padding: 5px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.menu-container {
+    width: 80%;
+    max-width: 800px;
+    margin: 20px auto;  /* Centering the menu container */
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+/* Specific adjustments for the preview page */
+#preview-list {
+    list-style: none;  /* Removing list style */
+    padding-left: 0;  /* Removing padding to align text to center */
+}
+
+.total {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 20px;  /* Adding some space before the total */
+}
+
+.button-container {
+    margin-top: 20px;  /* Space above the buttons */
+}
+
+.print-button, .edit-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;  /* Ensures buttons are centered and inline */
+    margin: 0 10px;  /* Space between buttons */
+}
+
+.edit-button {
+    background-color: #f0ad4e;
+}
+
+/* print.css */
+@media print {
+    body {
+        width: 58mm; /* Adjust based on your receipt width */
+        font-family: 'Courier New', Courier, monospace; /* Monospace to resemble receipt font */
+        background-color: #FFFFFF;
+        color: #000000;
+    }
+
+    .receipt-container {
+        width: 100%;
+        margin: 0 auto;
+        padding: 0;
+        text-align: left;
+    }
+
+    h1 {
+        font-size: 14px;
+        margin: 5px 0;
+        text-align: center;
+    }
+
+    ul#preview-list {
+        padding: 0;
+        list-style-type: none;
+        margin: 10px 0;
+    }
+
+    ul#preview-list li {
+        font-size: 12px;
+        margin: 5px 0;
+        border-bottom: 1px dashed #000;
+        padding-bottom: 5px;
+    }
+
+    .total {
+        font-size: 14px;
+        font-weight: bold;
+        text-align: right;
+        margin-top: 10px;
+    }
+
+    button {
+        display: none; /* Hide buttons */
+    }
+}
+
+
+.back-button {
+    padding: 10px 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block; /* makes it easier to center */
+    width: 100px; /* fixed width */
+    text-align: center; /* centers text */
+   
+}
+
+.back-button:hover {
+    background-color: #0056b3;
+}
