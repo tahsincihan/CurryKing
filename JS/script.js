@@ -87,5 +87,5 @@ function previewOrder() {
 }
 
 function goBack() {
-    window.location.href = '/CurryKing/Pages/index.html'; // Adjust the path as necessary
+    window.location.href = '/CurryKing/index.html'; // Adjust the path as necessary
 }
