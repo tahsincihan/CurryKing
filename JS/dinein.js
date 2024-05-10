@@ -59,21 +59,33 @@ function loadItems(categoryId, itemsDiv) {
     });
 }
 
-function addToOrder(button) {
+function addToOrder(button, categoryId) {
     const itemDiv = button.parentNode;
     const name = itemDiv.querySelector('h4').innerText;
-    const note = itemDiv.querySelector('.dish-note').value;
+    const note = itemDiv.querySelector('.dish-note') ? itemDiv.querySelector('.dish-note').value : ''; // Ensure there's a text area for notes
     const quantity = parseInt(itemDiv.querySelector('.quantity').value);
     const price = parseFloat(itemDiv.querySelector('.quantity').dataset.price);
-    const subtotal = price * quantity;
+    const riceSelector = itemDiv.querySelector('.rice-options');
+    const riceOption = riceSelector ? riceSelector.value : '0'; // Check if there's a rice option selected
+    const additionalCost = riceOption !== '0' ? parseFloat(riceOption) : 0; // Only add additional cost if not default
+    const subtotal = (price + additionalCost) * quantity;
+
+    let details = `${name} - x ${quantity}`;
+    if (categoryId !== "starters" && additionalCost > 0) {
+        const riceName = riceSelector.options[riceSelector.selectedIndex].text;
+        details += ` (${riceName})`; // Add rice option in brackets if it's not a starter and has an added cost
+    }
+    if (note) details += ` - Note: ${note}`; // Add notes if available
 
     const li = document.createElement('li');
-    li.textContent = `${name} - x ${quantity}${note ? ' - Note: ' + note : ''}`;
-    li.dataset.subtotal = subtotal;
+    li.textContent = details;
+    li.dataset.subtotal = subtotal; // Store the subtotal for calculation
     document.getElementById('order-list').appendChild(li);
 
     updateTotal();
 }
+
+
 
 function updateTotal() {
     const orderItems = document.querySelectorAll('#order-list li');
