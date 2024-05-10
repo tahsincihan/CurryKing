@@ -62,7 +62,7 @@ function addToOrder(button, categoryId) {
     const price = parseFloat(itemDiv.querySelector('.quantity').dataset.price) + additionalCost;
     const subtotal = price * quantity;
 
-    const displayText = `${name}${riceOption && riceOption !== 'Pilau Rice' ? ' (' + riceOption + ')' : ''} - x ${quantity}${note ? ' - Note: ' + note : ''}`;
+    const displayText = `${name}${riceOption && riceOption !== 'Pilau Rice' ? ' (' + riceOption + ')' : ''} - x${quantity}${note ? ' - Note: ' + note : ''}`;
 
     const li = document.createElement('li');
     li.textContent = displayText;
@@ -81,17 +81,35 @@ function addToOrder(button, categoryId) {
 
 
 function previewOrder() {
+    const orderType = document.getElementById('orderType').value;
+    const orderDetails = {};
+
+    if (orderType === 'collection') {
+        orderDetails.name = document.getElementById('name').value;
+        orderDetails.contactNumber = document.getElementById('contactNumber').value;
+    } else {
+        orderDetails.address = document.getElementById('address').value;
+        orderDetails.postcode = document.getElementById('postcode').value;
+        orderDetails.contactNumber = document.getElementById('deliveryContactNumber').value;
+    }
+
     const orderItems = document.querySelectorAll('#order-list li');
-    const order = Array.from(orderItems).map(li => {
+    const items = Array.from(orderItems).map(li => {
         return {
-            text: li.childNodes[0].nodeValue,  // Fetch only the text node value
+            text: li.childNodes[0].nodeValue,
             subtotal: parseFloat(li.dataset.subtotal)
         };
     });
+
+    const order = {
+        details: orderDetails,
+        items: items,
+        orderType: orderType
+    };
+
     localStorage.setItem('order', JSON.stringify(order));
     window.location.href = '/CurryKing/Pages/preview.html';
 }
-
 
 
 
@@ -111,3 +129,62 @@ function removeFromOrder(item) {
     item.remove(); // Removes the item from the DOM
     updateTotal(); // Updates the total after an item is removed
 }
+
+
+function toggleOrderType() {
+    var orderType = document.getElementById('orderType').value;
+    if (orderType === 'collection') {
+        document.getElementById('collectionInfo').style.display = 'block';
+        document.getElementById('deliveryInfo').style.display = 'none';
+    } else if (orderType === 'delivery') {
+        document.getElementById('collectionInfo').style.display = 'none';
+        document.getElementById('deliveryInfo').style.display = 'block';
+    }
+}
+
+function submitOrder() {
+    var orderType = document.getElementById('orderType').value;
+    var name = document.getElementById('name').value;
+    var contactNumber = document.getElementById('contactNumber').value;
+    var address = document.getElementById('address').value;
+    var postcode = document.getElementById('postcode').value;
+    var deliveryContactNumber = document.getElementById('deliveryContactNumber').value;
+
+    // Here you can handle the submission of the order details
+    console.log('Order Type:', orderType);
+    if (orderType === 'collection') {
+        console.log('Name:', name, 'Contact Number:', contactNumber);
+    } else {
+        console.log('Address:', address, 'Postcode:', postcode, 'Contact Number:', deliveryContactNumber);
+    }
+}
+
+
+function submitAddress() {
+    // You can add code here to handle the submission of the address
+    // This could include validation, formatting, and sending it to a server
+    console.log("Submitting Address");
+}
+
+function displayAddress(data) {
+    var addressInfo = `
+        <strong>Postcode:</strong> ${data.postcode}<br>
+        <strong>Country:</strong> ${data.country}<br>
+        <strong>Region:</strong> ${data.region}<br>
+        <strong>Parish:</strong> ${data.parish}<br>
+        <strong>Admin District:</strong> ${data.admin_district}<br>
+    `;
+    document.getElementById('addressResult').innerHTML = addressInfo;
+}
+
+
+document.getElementById('previewOrder').addEventListener('click', function() {
+    const orderType = document.getElementById('orderType').value;
+    const name = orderType === 'collection' ? document.getElementById('collectionName').value : '';
+    const number = orderType === 'collection' ? document.getElementById('collectionNumber').value : document.getElementById('deliveryNumber').value;
+    const address = orderType === 'delivery' ? document.getElementById('deliveryAddress').value : '';
+
+    const orderDetails = { orderType, name, number, address };
+    localStorage.setItem('orderDetails', JSON.stringify(orderDetails));
+    window.location.href = '/CurryKing/Pages/preview.html';
+});

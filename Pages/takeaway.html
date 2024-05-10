@@ -26,14 +26,38 @@
         <!-- Additional categories can be added similarly -->
     </div>
 
+   
+    
+
+    
+
     <!-- Add this inside the <div class="menu-container"> after all categories -->
     <div class="order-summary">
+        
         <h2>Your Order</h2>
         <ul id="order-list"></ul>
         <p id="total">Total: £0.00</p>
-        <button id="previewOrder">Preview Order</button>
-    </div>
+        <label for="orderType">Order Type:</label>
+        <select id="orderType" onchange="toggleOrderType()">
+            <option value="collection">Collection</option>
+            <option value="delivery">Delivery</option>
+        </select>
+
+        <!-- Collection Inputs -->
+        <div id="collectionInfo" style="display:block;">
+            <input type="text" id="name" placeholder="Name">
+            <input type="text" id="contactNumber" placeholder="Contact Number">
+        </div>
+
+        <!-- Delivery Inputs -->
+        <div id="deliveryInfo" style="display:none;">
+            <input type="text" id="address" placeholder="Address">
+            <input type="text" id="postcode" placeholder="Postcode">
+            <input type="text" id="deliveryContactNumber" placeholder="Contact Number">
+        </div>
     
+        <button id="previewOrder">Preview Order</button>
+        
     
     <script src="/CurryKing/JS/script.js"></script>
 </body>
